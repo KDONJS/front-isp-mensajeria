@@ -1,8 +1,8 @@
 import styled from "styled-components";
-export function Home() {
+export function Usuarios() {
     return (
         <Container>
-            <h1>Home</h1>
+            <h1>Usuarios</h1>
         </Container>
     );
 }
