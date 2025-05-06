@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import logo from "../assets/react.svg";
+import logo from "../assets/logo_tesla.svg";
 import { variables } from "../styles/variables";
-import { AiOutlineLeft, AiOutlineHome, AiOutlineDashboard, AiOutlineSetting } from "react-icons/ai";
-import { MdLogout, MdOutlineMessage, MdOutlineTask} from "react-icons/md";
-import { LiaUsersCogSolid } from "react-icons/lia";
+import { ChevronLeft, House, Send, LayoutDashboard, Users, ClipboardList, Settings, LogOut } from 'lucide-react';
 import { NavLink} from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
@@ -19,13 +17,12 @@ export function Sidebar({sidebarOpen, setSidebarOpen}) {
         <Container $isOpen = {sidebarOpen} $themeUse={theme}>
             <button className="sidebarButton"
                 onClick={ModSidebarOpen}>
-                <AiOutlineLeft />
+                <ChevronLeft />
             </button>
             <div className="LogoContent">
                 <div className="imgContent">
                     <img src={logo}/>
                 </div>
-                <h2>TeslaNet</h2>
             </div>
             {linksArray.map(({icon, label, to}) => (
                 <div className="LinkContainer" key={label}>
@@ -81,27 +78,27 @@ export function Sidebar({sidebarOpen, setSidebarOpen}) {
 const linksArray = [
 {
     label: "Home",
-    icon: <AiOutlineHome/>,
+    icon: <House/>,
     to: "/",
 },
 {
     label: "Mensajes",
-    icon: <MdOutlineMessage/>,
+    icon: <Send/>,
     to: "/mensajes",
 },
 {
     label: "Dashboard",
-    icon: <AiOutlineDashboard/>,
+    icon: <LayoutDashboard/>,
     to: "/dashboard",
 },
 {
     label: "Usuarios",
-    icon: <LiaUsersCogSolid/>,
+    icon: <Users/>,
     to: "/usuarios",
 },
 {
     label: "Tareas",
-    icon: <MdOutlineTask/>,
+    icon: <ClipboardList/>,
     to: "/tareas",
 },
 
@@ -109,12 +106,12 @@ const linksArray = [
 const secondarylinksArray = [
 {
     label: "Configuracion",
-    icon: <AiOutlineSetting/>,
+    icon: <Settings />,
     to: "/configuracion",
 },
 {
     label: "Salir",
-    icon: <MdLogout/>,
+    icon: <LogOut />,
     to: "/logout",
 },
 ];
@@ -124,7 +121,7 @@ const Container = styled.div`
     color: ${(props) => props.theme.text};
     background: ${(props) => props.theme.bg};
     position: sticky;
-    padding-top: 20px;
+    padding-top: 30px;
     
     .sidebarButton{
         position: absolute;
@@ -160,19 +157,16 @@ const Container = styled.div`
             display: flex;
             img {
                 max-width: 100%;
-                height: auto;;
+                height: auto;
             }
             cursor: pointer;
             transition: all 0.3s;
-            transform: ${({isOpen}) => (isOpen ? `scale(0.7)` : `scale(1.5)`)};
+            transform: ${({$isOpen}) => ($isOpen ? `scale(1.5)` : `scale(0.9)`)};
         }
-        h2 {
-            display: ${({isOpen}) => (isOpen ? `block` : `none`)};
-        };
     }   
     .LinkContainer {
         margin: 8px 0;
-        padding: 0 15%;
+        padding: 0;
         :hover {
             background: ${(props) => props.theme.bg3};
         }
@@ -202,17 +196,22 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: absolute;
+        bottom: 20px; 
+        left: 0;
+        width: 100%; 
+        padding: 0 20px
         .titletheme{
             display: block;
             padding: 10px;
             font-weight: 700;
-            opacity: ${({isOpen}) => (isOpen ? `1` : `0`)};
+            opacity: ${({$isOpen}) => ($isOpen ? `1` : `0`)};
             transition: all 0.3s;
             white-space: nowrap;
             overflow: hidden;
         }
         .Tooglecontent{
-            margin: ${({isOpen}) => (isOpen ? `auto 40px` : `auto 15px`)};
+            margin: ${({$isOpen}) => ($isOpen ? `auto 40px` : `auto 15px`)};
             width: 36px;
             height: 20px;
             border-radius: 10px;
@@ -253,7 +252,7 @@ const Container = styled.div`
                             left: 0;
                             right: 0;
                             bottom: 0;
-                            background: ${({themeUse}) => (themeUse === "Light" ? variables.lightcheckbox : variables.darkcheckbox)};
+                            background: ${({$themeUse}) => ($themeUse === "Light" ? variables.lightcheckbox : variables.darkcheckbox)};
                             transition: 0.4s;
                             &::before{
                                 position: absolute;
