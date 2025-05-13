@@ -31,7 +31,7 @@ export function Sidebar({sidebarOpen, setSidebarOpen}) {
                             {icon}
                         </div>
                         {sidebarOpen &&(
-                            <span>{label}</span>
+                            <span className="labelMenu">{label}</span>
                         )
                     }
                     </NavLink>
@@ -184,8 +184,12 @@ const Container = styled.div`
                     }
             }
             &.active {
+                 color: ${(props) => props.theme.bg4};
                 .LinkIcon{
                     svg{
+                        color: ${(props) => props.theme.bg4};
+                    }
+                .labelMenu{
                         color: ${(props) => props.theme.bg4};
                     }
                 }

@@ -71,7 +71,7 @@ export const Dark = {
     bg3: "rgb(50,50,50)",
     text: "rgb(210,210,210)",
     primary: "rgb(52, 131, 235)",
-    bg4:"#9247FC",
+    bg4:"rgb(234, 5, 5)",
     bgtotal:"#21252B",
     barrascroll: "#A18AFF",
 
